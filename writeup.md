@@ -40,7 +40,7 @@ RMSE tracking errors are [X : 0.0977, Y : 0.0854, VX : 0.4406, VZ : 0.4608]
 **7. The code is efficient.**
 
 * For the most part, I followed the provided outline.  However, I did use a more _functional programming_ approach to the implementation of the Kalman Filter itself.  Notice that the Kalman filter defined  in kalman_filter.cpp is not an object and has no state.
-* I prefer this approach because otherwise we have to know the "secret handshakes" to use the kalman filter object.  "Aaah, you set R_radar and R_laser, but did you set Q?".  Nothing is going to warn if you don't, and no one will tell you if somebody or something else changes those values under your feet before you get to make the actual call of the desired update function.
+* I prefer this approach because otherwise we have to know the "secret handshakes" to use the kalman filter object.  "Aaah, salaam and good evening to you, worthy friend.  I see that you set `R_radar` and `R_laser`, but did you set `Q`?".  Nothing is going to warn if you don't, and no one will tell you if somebody or something else changes those values under your feet before you get to make the actual call of the desired update function.
 
 ---
 
