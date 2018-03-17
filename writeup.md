@@ -10,17 +10,19 @@ The goals / steps of this project are the following:
 [//]: # "Image References"
 [image1]: ./images/rmse.png
 ## [Rubric](https://review.udacity.com/#!/rubrics/513/view) Points
-####1. Code must compile without errors with `cmake` and `make`.
+#### 1. Code must compile without errors with `cmake` and `make`.####
+
+
 
 Done.  Just try it.
 
-####2. Tracking Accuracy.
+#### 2. Tracking Accuracy.####
 
 RMSE tracking errors are [X : 0.0977, Y : 0.0854, VX : 0.4406, VZ : 0.4608]
 
 ![alt text][image1]
 
-####3. My Sensor Fusion algorithm follows the general processing flow as taught in the online lessons.
+#### 3. My Sensor Fusion algorithm follows the general processing flow as taught in the online lessons.####
 
 * The Kalman filter algorithm is implemented in [./src/kalman_filter.cpp](./src/kalman_filter.cpp).
 * Note that I use a slightly different formulation for the covariance measurement update to help preserve symmetric positive definiteness of the state covariance (perhaps not important for this particular project). 
