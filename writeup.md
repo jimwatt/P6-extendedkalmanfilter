@@ -10,9 +10,7 @@ The goals / steps of this project are the following:
 [//]: # "Image References"
 [image1]: ./images/rmse.png
 ## [Rubric](https://review.udacity.com/#!/rubrics/513/view) Points
-#### 1. Code must compile without errors with `cmake` and `make`.####
-
-
+####1. Code must compile without errors with `cmake` and `make`.
 
 Done.  Just try it.
 
