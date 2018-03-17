@@ -10,34 +10,34 @@ The goals / steps of this project are the following:
 [//]: # "Image References"
 [image1]: ./images/rmse.png
 ## [Rubric](https://review.udacity.com/#!/rubrics/513/view) Points
-####1. Code must compile without errors with `cmake` and `make`.
+**1. Code must compile without errors with `cmake` and `make`.**
 
 Done.  Just try it.
 
-#### 2. Tracking Accuracy.####
+**2. Tracking Accuracy.**
 
 RMSE tracking errors are [X : 0.0977, Y : 0.0854, VX : 0.4406, VZ : 0.4608]
 
 ![alt text][image1]
 
-#### 3. My Sensor Fusion algorithm follows the general processing flow as taught in the online lessons.####
+**3. My Sensor Fusion algorithm follows the general processing flow as taught in the online lessons.**
 
 * The Kalman filter algorithm is implemented in [./src/kalman_filter.cpp](./src/kalman_filter.cpp).
 * Note that I use a slightly different formulation for the covariance measurement update to help preserve symmetric positive definiteness of the state covariance (perhaps not important for this particular project). 
 
-####4. The Kalman Filter algorithm handles the first measurements appropriately.
+**4. The Kalman Filter algorithm handles the first measurements appropriately.**
 
 * Very basic state initialization is implemented.  If we are willing to allow initialization after the first $n>1$ measurements, then we can obtain better initialization of the full state.
 
-####5. The Kalman Filter algorithm first predicts then updates.
+**5. The Kalman Filter algorithm first predicts then updates.**
 
 * That's what it does.
 
-####6. The Kalman Filter can handle radar and lidar measurements.
+**6. The Kalman Filter can handle radar and lidar measurements.**
 
 * Yup.
 
-#### 7. The code is efficient
+**7. The code is efficient.**
 
 * For the most part, I followed the provided outline.  However, I did use a more _functional programming_ approach to the implementation of the Kalman Filter itself.  Notice that the Kalman filter defined  in kalman_filter.cpp is not an object and has no state.
 * I prefer this approach because otherwise we have to know the "secret handshakes" to use the kalman filter object.  "Aaah, you set R_radar and R_laser, but did you set Q?".  Nothing is going to warn if you don't, and no one will tell you if somebody or something else changes those values under your feet before you get to make the actual call of the desired update function.
