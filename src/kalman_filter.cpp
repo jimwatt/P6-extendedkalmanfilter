@@ -3,40 +3,28 @@
 using Eigen::MatrixXd;
 using Eigen::VectorXd;
 
-// Please note that the Eigen library does not initialize 
-// VectorXd or MatrixXd objects with zeros upon creation.
+namespace kalman_filter {
 
-KalmanFilter::KalmanFilter() {}
+// Update x and P, given the motion model and uncertainty
+void Predict(VectorXd &x, MatrixXd &P, const MatrixXd &F, const MatrixXd &Q) {
 
-KalmanFilter::~KalmanFilter() {}
+  x = F * x;
+  P = F * P * (F.transpose()) + Q;
 
-void KalmanFilter::Init(VectorXd &x_in, MatrixXd &P_in, MatrixXd &F_in,
-                        MatrixXd &H_in, MatrixXd &R_in, MatrixXd &Q_in) {
-  x_ = x_in;
-  P_ = P_in;
-  F_ = F_in;
-  H_ = H_in;
-  R_ = R_in;
-  Q_ = Q_in;
 }
 
-void KalmanFilter::Predict() {
-  /**
-  TODO:
-    * predict the state
-  */
+// Update x and P given the measurement residual
+void Update(VectorXd &x, MatrixXd &P, const MatrixXd &H, const MatrixXd &R, const VectorXd& yk) {
+
+  const int nx = x.size();
+  const MatrixXd Idx = MatrixXd::Identity(nx,nx);
+  const MatrixXd Sk = H * P * (H.transpose()) + R;
+  const MatrixXd Kk = P * (H.transpose()) * (Sk.inverse());
+  x = x + Kk * yk;
+  P = (Idx - Kk*H) * P * (Idx - Kk * H).transpose()  +  Kk * R * Kk.transpose(); // this form helps to maintain symmetric P
+
 }
 
-void KalmanFilter::Update(const VectorXd &z) {
-  /**
-  TODO:
-    * update the state by using Kalman Filter equations
-  */
-}
+}   // namespace kalman_filter
 
-void KalmanFilter::UpdateEKF(const VectorXd &z) {
-  /**
-  TODO:
-    * update the state by using Extended Kalman Filter equations
-  */
-}
+

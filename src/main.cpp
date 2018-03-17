@@ -112,10 +112,10 @@ int main()
 
     	  VectorXd estimate(4);
 
-    	  double p_x = fusionEKF.ekf_.x_(0);
-    	  double p_y = fusionEKF.ekf_.x_(1);
-    	  double v1  = fusionEKF.ekf_.x_(2);
-    	  double v2 = fusionEKF.ekf_.x_(3);
+    	  double p_x = fusionEKF.x_(0);
+    	  double p_y = fusionEKF.x_(1);
+    	  double v1  = fusionEKF.x_(2);
+    	  double v2 = fusionEKF.x_(3);
 
     	  estimate(0) = p_x;
     	  estimate(1) = p_y;
